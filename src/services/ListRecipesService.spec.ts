@@ -2,8 +2,6 @@ import 'reflect-metadata';
 
 import AppError from '../errors/AppError';
 
-//import { IRecipes, IRecipe } from '../entities/Recipes';
-
 import RecipesRepository from '../repositories/RecipesRepository';
 import ListRecipesService from './ListRecipesService';
 

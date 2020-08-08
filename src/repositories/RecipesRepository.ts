@@ -1,7 +1,10 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
 import IRecipesRepository from './IRecipesRepository';
 import AppError from '../errors/AppError';
+
+dotenv.config();
 
 interface Recipe {
   title: string;
@@ -15,7 +18,7 @@ class RecipesRepository implements IRecipesRepository {
     const ingredientsValues = keywords.toString();
 
     const requestRecipes = await axios
-      .get(`http://www.recipepuppy.com/api/?i=${ingredientsValues}`)
+      .get(`${process.env.RECIPEPUPPY_URL}?i=${ingredientsValues}`)
       .then(response => {
         return response.data.results;
       })
@@ -31,7 +34,9 @@ class RecipesRepository implements IRecipesRepository {
 
         const requestGIPHY = await axios
           .get(
-            `http://api.giphy.com/v1/gifs/search?q=${recipe.title.trim()}&api_key=BZZJZtqw73HpPUN1JjS2lmaS3Xkwirw8&limit=1`,
+            `${process.env.GIPHY_URL}?q=${recipe.title.trim()}&api_key=${
+              process.env.API_KEY_GIPHY
+            }&limit=1`,
           )
           .then(response => {
             return response.data.data[0];
