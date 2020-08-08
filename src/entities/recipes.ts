@@ -1,4 +1,4 @@
-export type IRecipe = Array<{
+type IRecipe = Array<{
   title: string;
   ingredients: string[];
   link: string;

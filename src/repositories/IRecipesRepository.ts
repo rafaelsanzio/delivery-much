@@ -1,5 +1,5 @@
-import { IRecipes } from '../entities/recipes';
+import { IRecipes } from '../entities/Recipes';
 
-export default interface IProductsRepository {
+export default interface IRecipesRepository {
   findRecipes(keywords: string[]): Promise<IRecipes>;
 }

@@ -1,25 +1,52 @@
-// const recipe = {
-//   title: 'Greek Omelet with Feta',
-//   ingredients: [
-//     'eggs',
-//     'feta cheese',
-//     'garlic',
-//     'red onions',
-//     'spinach',
-//     'tomato',
-//     'water',
-//   ],
-//   link: 'http://www.kraftfoods.com/kf/recipes/greek-omelet-feta-104508.aspx',
-//   gif: 'https://media.giphy.com/media/xBRhcST67lI2c/giphy.gif',
-// };
+import 'reflect-metadata';
 
-// const recipes: IRecipe = [];
+import AppError from '../errors/AppError';
 
-// recipes.push(recipe);
+//import { IRecipes, IRecipe } from '../entities/Recipes';
 
-// const response = {
-//   keywords,
-//   recipes,
-// };
+import RecipesRepository from '../repositories/RecipesRepository';
+import ListRecipesService from './ListRecipesService';
 
-// return response;
+let recipesRepository: RecipesRepository;
+let listRecipes: ListRecipesService;
+
+describe('List Recipes', () => {
+  beforeEach(() => {
+    recipesRepository = new RecipesRepository();
+    listRecipes = new ListRecipesService(recipesRepository);
+  });
+
+  it('should be able to list recipes', async () => {
+    const recipes = await listRecipes.execute({
+      keywords: `onion,tomato`,
+    });
+
+    expect(recipes).toHaveProperty('keywords');
+    expect(recipes).toHaveProperty('recipes');
+  });
+
+  it('should not be able to list recipes with more than three keywords', async () => {
+    await expect(
+      listRecipes.execute({
+        keywords: `onion,tomato,bread,garlic`,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should not be able to list recipes without keywords', async () => {
+    await expect(
+      listRecipes.execute({
+        keywords: ``,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should not be able to list recipes with keywords on wrong type', async () => {
+    await expect(listRecipes.execute({ keywords: 4 })).rejects.toBeInstanceOf(
+      AppError,
+    );
+    await expect(
+      listRecipes.execute({ keywords: ['onion', 'tomato'] }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+});
