@@ -27,7 +27,16 @@ O projeto **API de Receitas**, desenvolvido para teste de programador na [Delive
 
 - **Passo 1️⃣** : git clone do projeto [Delivery Much Teste](https://github.com/rafaelsanzio/test-delivery-much 'Delivery Much Teste')
 - **Passo 2️⃣** : executar a instalação do [Node](https://nodejs.org/en/ 'Node')
-- **Passo 3️⃣** : rodando a aplicação executando os seguintes comandos:
+- **Passo 3️⃣** : criar o arquivo .env (configurações) do projeto
+```
+  PORT=3333
+
+  GIPHY_URL=http://api.giphy.com/v1/gifs/search
+  API_KEY_GIPHY=<SUA_API_KEY_GIPHY>
+
+  RECIPEPUPPY_URL=http://www.recipepuppy.com/api/
+```
+- **Passo 4️⃣** : rodando a aplicação executando os seguintes comandos:
 
 ```bash
    # Navegando até a pasta do projeto
