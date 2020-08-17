@@ -14,7 +14,7 @@
 
 ## 🔖 Sobre o projeto
 
-O projeto **API de Receitas**, desenvolvido para teste de programador na [Delivery Much](https://deliverymuch.com.br/inicio 'Delivery Much'). Tendo como objetivo, listar receitas através de ingredientes passados. Utilizando APIs públicas da  [RecipePuppy](http://www.recipepuppy.com/about/api/ "RecipePuppy") e da [GIPHY](https://developers.giphy.com/docs/ "GIPHY") para obter os dados necessários.
+O projeto **API de Receitas**. Tendo como objetivo, listar receitas através de ingredientes passados. Utilizando APIs públicas da  [RecipePuppy](http://www.recipepuppy.com/about/api/ "RecipePuppy") e da [GIPHY](https://developers.giphy.com/docs/ "GIPHY") para obter os dados necessários.
 
 ## 💻 Tecnologias
 
